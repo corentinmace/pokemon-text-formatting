@@ -43,6 +43,30 @@ const formatComposable = () => {
         console.log(chunks)
         return chunks.join('')
     }
+
+    const generate_preview = (str) => {
+        var colors = { 
+            "\\x0001": "red",
+            "ぁ": "blue",
+            "あ": "green",
+        }
+        var whitespaces = {
+            "\\n":"\n", "\\r":"\r", "\\f": "\f"
+        }
+        let regex = /\\vFF00\\x0001(\\x0001|あ|ぁ)(.*)\\vFF00\\x0001\\x0000!/
+    
+        if (str.match(regex) !== null) {
+            str = str
+                .replace(/\\vFF00\\x0001\\x0000!/g, `</span>`)
+                .replace(/\\vFF00\\x0001/g, `<span style="color: `)
+                .replace(/\\x0001|あ|ぁ/g, function(matched) {
+                    return `${colors[matched]}">`;
+                });
+        }
+        return str.replace(/\\n|\\r|\\f/g, function(matched) {
+            return whitespaces[matched];
+        })
+    }
     
         // EXAMPLES
     const sentence_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -54,7 +78,8 @@ const formatComposable = () => {
 
     return {
         format,
-        reverse
+        reverse, 
+        generate_preview
     }
 
 }
