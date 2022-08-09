@@ -1,7 +1,9 @@
-# Vue 3 + Vite
+# ![](pokeball.png) Pokemon Text Formatter
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This tool has been made for people that are not good at formatting text for Pokémon 4th & 5th gen romhack !
 
-## Recommended IDE Setup
+This is a tool that is still in development. If you have any issue, any comments or features that you would like to see in this tool, please tell us [here](https://github.com/corentinmace/pokemon-text-formatting/issues) 
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+# Credits 
+Algorithm - [@RathGate](https://github.com/rathgate)
+Interface - [@corentinmace](https://github.com/corentinmace)
