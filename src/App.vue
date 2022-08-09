@@ -81,7 +81,7 @@ export default {
 		<div class="w-1/2 px-5">
 			<p class="text-lg text-white uppercase font-bold mb-2">Input</p>
 			<textarea id="input" class="min-h-[200px] placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" type="text" @input="handleChange()" v-model="text"></textarea>
-			<div class="flex">
+			<!-- <div class="flex">
 				<div @click="setColor('red')" class="h-8 w-8 cursor-pointer rounded-lg bg-red-600 border border-slate-300 mt-3 mr-3"></div>
 				<div @click="setColor('green')" class="h-8 w-8 cursor-pointer rounded-lg bg-green-600 border border-slate-300 mt-3 mr-3"></div>
 				<div @click="setColor('blue')" class="h-8 w-8 cursor-pointer rounded-lg bg-blue-600 border border-slate-300 mt-3 mr-3"></div>
@@ -89,7 +89,7 @@ export default {
 				<form class="flex items-center" v-if="showColorText" @submit.prevent="addColorCodes">
 					<input  placeholder="The word you want to color" class="mt-3 placeholder:italic text-white block bg-zinc-800 border border-slate-300 rounded-md p-2  shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mr-2" v-model="colorCodeText">
 					<button class="mt-3 uppercase font-bold text-white block bg-zinc-800 border border-slate-300 rounded-md p-2  shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">Insert</button>
-				</form>
+				</form> -->
 		</div>
 		<div class="w-1/2 px-5 flex justfify-center flex-col">
 			<p class="text-lg text-white uppercase font-bold mb-4">Preview</p>
@@ -101,5 +101,5 @@ export default {
 		<textarea class="placeholder:italic text-white block bg-zinc-800 w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" v-model="formatedText" disabled></textarea>
 	</div>
 	
-	<div class="fixed bottom-0 py-2 w-full bg-zinc-800 text-slate-500 text-sm text-center">Tool made by <a  class="font-bold text-slate-400" href="https://github.com/corentinmace">Corentin Macé (Kuha)</a> & <a class="font-bold text-slate-400" href="https://github.com/rathgate">RathGate</a></div>
+	<div class="fixed bottom-0 py-2 w-full bg-zinc-800 text-slate-500 text-sm text-center">Tool made by <a  class="font-bold text-slate-400" href="https://github.com/corentinmace">Corentin Macé (Kuha)</a> & <a class="font-bold text-slate-400" href="https://github.com/rathgate">RathGate</a> - <a  class="font-bold text-slate-400" href="https://github.com/corentinmace/pokemon-text-formatting/issues">Report a bug, ask for a feature here</a></div>
 </template>
