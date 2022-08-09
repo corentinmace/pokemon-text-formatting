@@ -6,4 +6,5 @@ This is a tool that is still in development. If you have any issue, any comments
 
 # Credits 
 Algorithm - [@RathGate](https://github.com/rathgate)
+
 Interface - [@corentinmace](https://github.com/corentinmace)
