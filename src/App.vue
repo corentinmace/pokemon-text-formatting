@@ -21,11 +21,9 @@ export default {
 		}
 	
 		const handleChange = () => {
-			console.log("change")
 			let formatValue = format(text.value, checkToFlow.value)
 			previewText.value = formatValue.HTML_formatted
 			formatedText.value = formatValue.DSPRE_formatted
-			console.log(previewText.value)
 		}
 
 		const addColorCodes = () => {
