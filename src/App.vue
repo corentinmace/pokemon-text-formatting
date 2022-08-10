@@ -116,10 +116,10 @@ export default {
 						<option value="38,3">PokeDex</option>
 					</select>
 
-					<label for="line-setter" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Lines</label>
+					<label title="This is the interval between a \n and a \r (or \f) " for="line-setter" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Lines</label>
 					<input v-model="linesSettings" id="line-setter" type="number" class="ml-2 mr-3 w-12 h-4 py-3 pl-2 text-white bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-sky-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
 
-					<label for="char-setter" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Characters</label>
+					<label title="This is the number of characters needed to break a line" for="char-setter" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Characters</label>
 					<input v-model="charsSettings" id="char-setter" type="number" class="ml-2 mr-3 w-12 h-4 pl-2 py-3 text-white bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-sky-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
 
 					<label for="link-checkbox" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Transform <span class="font-bold text-white">\r</span> to  <span class="font-bold text-white">\f</span></label>
