@@ -62,13 +62,13 @@ const formatComposable = () => {
             "\\x0001": "red", "ぁ": "blue", "あ": "green",
         };
         var whitespaces = {
-            "\\n":"\n", "\\r":"\r", "\\f": "\f"
+            "\\n":"\n", "\\r":"\r", "\\f": "\n"
         };
         let regex = /\\vFF00\\x0001(\\x0001|あ|ぁ)(.*)\\vFF00\\x0001\\x0000/g
     
         if (str.match(regex) !== null) {
             str = str
-                .replace(/\\vFF00\\x0001\\x0000!/g, `</span>`)
+                .replace(/\\vFF00\\x0001\\x0000/g, `</span>`)
                 .replace(/\\vFF00\\x0001/g, `<span style="color: `)
                 .replace(/\\x0001|あ|ぁ/g, function(matched) {
                     return `${colors[matched]}">`;
