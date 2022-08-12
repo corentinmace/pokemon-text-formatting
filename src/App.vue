@@ -110,20 +110,20 @@ export default {
 					<div @click="setColor('blue')" class="h-6 w-6 cursor-pointer rounded-lg bg-blue-600 border border-slate-300 mr-3"></div>
 				</div>
 				<div class="flex items-center">
-					<label for="select-setter" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Preset</label>
-					<select @change="handleSelect" v-model="selectPreset" id="select-setter" class="ml-2 mr-3 h-6 pl-2 text-white bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-sky-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+					<label for="select-setter" class=" text-sm font-medium text-gray-900 text-gray-300 tracking-wide">Preset</label>
+					<select @change="handleSelect" v-model="selectPreset" id="select-setter" class="ml-2 mr-3 h-6 pl-2 text-white bg-gray-100 rounded border-gray-300 focus:ring-sky-500 focus:ring-sky-600 ring-offset-sky-800 focus:ring-2 bg-gray-700 border-gray-600">
 						<option value="39,2" selected>Overworld</option>
 						<option value="38,3">PokeDex</option>
 					</select>
 
-					<label title="This is the interval between a \n and a \r (or \f) " for="line-setter" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Lines</label>
-					<input v-model="linesSettings" id="line-setter" type="number" class="ml-2 mr-3 w-12 h-4 py-3 pl-2 text-white bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-sky-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+					<label title="This is the interval between a \n and a \r (or \f) " for="line-setter" class=" text-sm font-medium text-gray-900 text-gray-300 tracking-wide">Lines</label>
+					<input v-model="linesSettings" id="line-setter" type="number" class="ml-2 mr-3 w-12 h-4 py-3 pl-2 text-white bg-gray-100 rounded border-gray-300 focus:ring-sky-500 focus:ring-sky-600 ring-offset-sky-800 focus:ring-2 bg-gray-700 border-gray-600">
 
-					<label title="This is the number of characters needed to break a line" for="char-setter" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Characters</label>
-					<input v-model="charsSettings" id="char-setter" type="number" class="ml-2 mr-3 w-12 h-4 pl-2 py-3 text-white bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-sky-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+					<label title="This is the number of characters needed to break a line" for="char-setter" class=" text-sm font-medium text-gray-900 text-gray-300 tracking-wide">Characters</label>
+					<input v-model="charsSettings" id="char-setter" type="number" class="ml-2 mr-3 w-12 h-4 pl-2 py-3 text-white bg-gray-100 rounded border-gray-300 focus:ring-sky-500 focus:ring-sky-600 ring-offset-sky-800 focus:ring-2 bg-gray-700 border-gray-600">
 
-					<label for="link-checkbox" class=" text-sm font-medium text-gray-900 dark:text-gray-300 tracking-wide">Transform <span class="font-bold text-white">\r</span> to  <span class="font-bold text-white">\f</span></label>
-					<input id="link-checkbox" type="checkbox" v-model="checkToFlow" class="ml-2 w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-sky-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+					<label for="link-checkbox" class=" text-sm font-medium text-gray-900 text-gray-300 tracking-wide">Transform <span class="font-bold text-white">\r</span> to  <span class="font-bold text-white">\f</span></label>
+					<input id="link-checkbox" type="checkbox" v-model="checkToFlow" class="ml-2 w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 focus:ring-sky-600 ring-offset-sky-800 focus:ring-2 bg-gray-700 border-gray-600">
 				</div>
 			</div>
 				<form class="flex items-center" v-if="showColorText" @submit.prevent="addColorCodes">
