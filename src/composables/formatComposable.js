@@ -4,6 +4,8 @@
 
 const formatComposable = () => {
 
+    let raw = '';
+
     const remove_whitespaces = (str) => {
         return str.replace(/\f|\r\n|\n|\r/gm, ' ');
     }
@@ -94,6 +96,11 @@ const formatComposable = () => {
         return {DSPRE_formatted, HTML_formatted}
     }
 
+    const rawOutput = (str) => {
+        raw = str;
+        console.log(raw)
+    }
+
     // EXAMPLES:
     const sentence_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     const sentence_2 = "I just had this idea.\nMaybe you can pull it off.\rIt’s about this town’s Gym Leader.\rHe’s really lost his enthusiasm lately\nbecause there’ve been so few good\fchallengers worth his time.\rHe’s been so bored, he spends all his\ntime renovating the Gym.\rAnd then the blackout happened...\nThat sure didn’t help lift his mood.\rYou know where I’m going with this,\ndon’t you?\rI need you to give him a battle\nthat’s so hot, it will reignite his\fpassion for battling.\rI’m counting on you, hotshot!\r"
@@ -107,6 +114,7 @@ const formatComposable = () => {
         text_to_DSPRE, 
         DSPRE_to_HTML,
         format,
+        rawOutput
     }
 }
 export default formatComposable

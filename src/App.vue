@@ -15,15 +15,13 @@ export default {
 		const charsSettings = ref('')
 		const linesSettings = ref('') 
 
-		
-
 		const defineLinesAndChar = () => {
 			let values = selectPreset.value.split(',')
 			charsSettings.value = values[0]
 			linesSettings.value = values[1]
 		}
 
-		const { format } = FormatComposable()
+		const { format, rawOutput } = FormatComposable()
 
 		const resetDefault = () => {
 			colorCodeText.value = ''
@@ -39,6 +37,7 @@ export default {
 			let formatValue = format(text.value, checkToFlow.value, JSON.parse(charsSettings.value), JSON.parse(linesSettings.value))
 			previewText.value = formatValue.HTML_formatted
 			formatedText.value = formatValue.DSPRE_formatted
+			rawOutput(text.value)
 		}
 
 		const addColorCodes = () => {
