@@ -112,6 +112,10 @@ const formatComposable = () => {
         console.log(raw)
     }
 
+    const selection = () => {
+        console.log(document.getSelection().toString())
+    }
+
     // EXAMPLES:
     const string = 'July 5th.\nToday, while on our journey through the densest part of the jungle, we were surprised to discover a new pokemon.\n\nJuly 10th.\nWe decided to name the recently discovered Pokémon Mew.\n\nFebruary the 6th.\nFrom the potential within Mew, we have managed to created an entirely new Pokémon: Mewtwo.\n\nSeptember the 1st.\nIt has become far too strong. It is beyond even us now.'
     const string_2 = "\nToday, while on our \njourney through the densest part of the jungle, we were surprised to discover a new pokemon."
@@ -121,7 +125,8 @@ const formatComposable = () => {
         text_to_DSPRE, 
         DSPRE_to_HTML,
         format,
-        rawOutput
+        rawOutput,
+        selection,
     }
 }
 export default formatComposable

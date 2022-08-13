@@ -66,7 +66,7 @@ export default {
 			linesSettings.value = values[1];
 		}
 
-		const { format, rawOutput } = FormatComposable();
+		const { format, rawOutput, selection } = FormatComposable();
 		const { addColorCodes } = ColorsComposable();
 
 		const resetDefault = () => {
@@ -83,6 +83,9 @@ export default {
 
 		const handleSelect = () => {
 			defineLinesAndChar();
+		}
+		const handleClick = () => {
+			selection();
 		}
 	
 		const handleChange = () => {
@@ -116,6 +119,7 @@ export default {
 			selectedGen,
 			fourthGenColors,
 			fifthGenColors,
+			handleClick,
 			resetDefault,
 			setColor,
 			addColorCodes,
@@ -167,7 +171,7 @@ export default {
 		</div>
 		<div class="w-1/2 px-5 flex justfify-center flex-col">
 			<p class="text-lg text-white uppercase font-bold mb-4">Preview</p>
-			<pre v-if="previewText" class="text-white whitespace-pre w-[39ch] outline-double outline-4 outline-offset-8 rounded outline-sky-500" v-html="previewText"></pre>
+			<pre @click="handleClick" v-if="previewText" class="text-white whitespace-pre w-[39ch] outline-double outline-4 outline-offset-8 rounded outline-sky-500" v-html="previewText"></pre>
 		</div>
 	</div>
 	<div class="p-10">
