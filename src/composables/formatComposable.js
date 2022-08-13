@@ -6,40 +6,51 @@ const formatComposable = () => {
 
     let raw = '';
 
+    String.prototype.removeExtraSpaces = function () {
+        return this
+            .replace(/(\c|\f|\r\n|\n|\r)+/g, "\n")
+            .replace(/^(\n|\s)+|(\n|\s)+$/g, '');
+    }
     const remove_whitespaces = (str) => {
         return str.replace(/\f|\r\n|\n|\r/gm, ' ');
     }
     
     const text_to_DSPRE = (str="", flow=true, index=39, lines=2) => {
-
-        // Removes potential whitespaces from str.
-        str = remove_whitespaces(str)
-
-        // PART 1: DIVIDES STR INTO CHUNKS OF {index} CHARACTERS [default: 39]:
-        let chunks = []; 
-        // Creates a copy of str without the potential color elements:
+        console.log(str)
+        str = str.removeExtraSpaces(); let chunks = [];
+        // Function to create the copy of string, initiate the variable.
         const generate_copy = () => { return str.slice().replace(/\\vFF00\\x0001(\\x0001|あ|ぁ)|\\vFF00\\x0001\\x0000/g, '')}
         let copy = generate_copy();
-
-        while (copy.length > index) {
-            // Case 1: Chunk constituted of at least two words, splits on the last whitespace of the chunk.
-            if (/ /.test(copy.slice(0, index + 1))) {
-                let last_space_index = [...copy.slice(0, index + 1).matchAll(' ')].length - 1;
-                chunks.push(str.slice(0, [...str.matchAll(' ')][last_space_index].index));
-                str = str.slice([...str.matchAll(' ')][last_space_index].index).replace(/^\s+|$\s+/g, '');
-
-            // Case 2: Chunk is a very long word, splits on the 'index-th' letter of the word.
+    
+        while (str.length > 0) {
+            if (copy.length > index) {
+                // Newline:
+                if (/\n/.test(copy.slice(0, index + 1))) {
+                    chunks.push(str.slice(0, [...str.matchAll(/\n/g)][0].index).removeExtraSpaces());
+                    str = str.slice([...str.matchAll(/\n/g)][0].index).removeExtraSpaces();
+                // Whitespace:
+                } else if (/ /.test(copy.slice(0, index + 1))) {
+                    let last_space_index = [...copy.slice(0, index + 1).matchAll(' ')].length - 1;
+                    chunks.push(str.slice(0, [...str.matchAll(' ')][last_space_index].index).removeExtraSpaces());
+                    str = str.slice([...str.matchAll(' ')][last_space_index].index).removeExtraSpaces();
+                
+                // Neither: 
+                } else {
+                    let count = str.match(/^\\vFF00\\x0001(\\x0001|あ|ぁ)/g) === null 
+                    ? 0 : str.match(/^\\vFF00\\x0001(\\x0001|あ|ぁ)/g)[0].length;
+                    chunks.push(str.slice(0, index + count).removeExtraSpaces()); str = str.slice(index + count).removeExtraSpaces();
+                }
             } else {
-                let count = str.match(/^\\vFF00\\x0001(\\x0001|あ|ぁ)/g) === null 
-                ? 0 : str.match(/^\\vFF00\\x0001(\\x0001|あ|ぁ)/g)[0].length;
-                chunks.push(str.slice(0, index + count)); str = str.slice(index + count).replace(/^\s+|$\s+/g, '');
+                // Newline:
+                if (/\n/.test(copy)) {
+                    chunks.push(str.slice(0, [...str.matchAll(/\n/g)][0].index).removeExtraSpaces());
+                    str = str.slice([...str.matchAll(/\n/g)][0].index).removeExtraSpaces();
+                } else {
+                    chunks.push(str.removeExtraSpaces()); str = '';
+                }
             }
-            // Updates the copy to the now updated str.
-            copy = generate_copy();
-
+            copy = generate_copy()
         }
-        // Adds the last chunk (length < index) to the chunk list.
-        chunks.push(str.replace(/^\s+|\s+$/g, ''));
 
         // PART 2: ADDS NEWLINE CHARACTERS AT THE END OF EACH CHUNK:
         if (chunks.length >= 1) {
@@ -102,12 +113,8 @@ const formatComposable = () => {
     }
 
     // EXAMPLES:
-    const sentence_1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    const sentence_2 = "I just had this idea.\nMaybe you can pull it off.\rIt’s about this town’s Gym Leader.\rHe’s really lost his enthusiasm lately\nbecause there’ve been so few good\fchallengers worth his time.\rHe’s been so bored, he spends all his\ntime renovating the Gym.\rAnd then the blackout happened...\nThat sure didn’t help lift his mood.\rYou know where I’m going with this,\ndon’t you?\rI need you to give him a battle\nthat’s so hot, it will reignite his\fpassion for battling.\rI’m counting on you, hotshot!\r"
-    const sentence_3 = "HELLOOOOOOOOOOOOOOOOOOOOOOOO (yeah that's a shitty exemple)"
-    const color_1 = "\\vFF00\\x0001ぁPenguin Pokémon PIPLUP!\\vFF00\\x0001\\x0000! Will you take this Pokémon?"
-    const color_2 = "\\vFF00\\x0001\\x0001Chimp Pokémon CHIMCHAR!\\vFF00\\x0001\\x0000!\\n Will you take this Pokémon?"
-    const color_3 = "\\vFF00\\x0001あTiny Leaf Pokémon TURTWIG!\\vFF00\\x0001\\x0000!\\r Will you take this Pokémon?"
+    const string = 'July 5th.\nToday, while on our journey through the densest part of the jungle, we were surprised to discover a new pokemon.\n\nJuly 10th.\nWe decided to name the recently discovered Pokémon Mew.\n\nFebruary the 6th.\nFrom the potential within Mew, we have managed to created an entirely new Pokémon: Mewtwo.\n\nSeptember the 1st.\nIt has become far too strong. It is beyond even us now.'
+    const string_2 = "\nToday, while on our \njourney through the densest part of the jungle, we were surprised to discover a new pokemon."
 
     return {
         remove_whitespaces,
