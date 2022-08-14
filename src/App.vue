@@ -89,7 +89,7 @@ export default {
 		}
 	
 		const handleChange = () => {
-			let formatValue = format(text.value, checkToFlow.value, JSON.parse(charsSettings.value), JSON.parse(linesSettings.value));
+			let formatValue = format(text.value, selectedGen.value, checkToFlow.value, JSON.parse(charsSettings.value), JSON.parse(linesSettings.value));
 			previewText.value = formatValue.HTML_formatted;
 			formatedText.value = formatValue.DSPRE_formatted;
 			rawOutput(text.value);
@@ -171,7 +171,7 @@ export default {
 		</div>
 		<div class="w-1/2 px-5 flex justfify-center flex-col">
 			<p class="text-lg text-white uppercase font-bold mb-4">Preview</p>
-			<pre @click="handleClick" v-if="previewText" class="text-white whitespace-pre w-[39ch] outline-double outline-4 outline-offset-8 rounded outline-sky-500" v-html="previewText"></pre>
+			<pre id="pre" @click="handleClick" v-if="previewText" class="text-white whitespace-pre w-[39ch] outline-double outline-4 outline-offset-8 rounded outline-sky-500" v-html="previewText"></pre>
 		</div>
 	</div>
 	<div class="p-10">
