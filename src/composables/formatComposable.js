@@ -139,12 +139,12 @@ const formatComposable = () => {
 
     const rawOutput = (str) => {
         raw = str;
-        console.log(raw)
+        // console.log(raw)
     }
 
     const selection = () => {
         let string = document.getSelection().toString().removeExtraSpaces();
-        console.log(`Words: ${string.replace(/\n/g, ' ').split(/ +/g).length}; Characters: ${string.length}`)
+        // console.log(`Words: ${string.replace(/\n/g, ' ').split(/ +/g).length}; Characters: ${string.length}`)
         return { word_count: string.replace(/\n/g, ' ').split(/ +/g).length, char_count: string.length }
     }
 
