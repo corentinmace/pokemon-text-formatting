@@ -7,7 +7,7 @@ This is a tool that is still in development. If you have any issue, any comments
 # Installation
 ###### Requirements 
 
-`Node v14.19.1 or higher (recommanded)`
+`Node v14.19.1 or higher (recommended)`
 
 
 ###### Install locally
